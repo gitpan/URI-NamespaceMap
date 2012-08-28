@@ -1,0 +1,66 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.68.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 3fcd49103c93b80fba4906415ca81f48ffce9dd4 Changes
+SHA1 338b3b174692b3fc44b25b9b01c8969b4331df84 LICENSE
+SHA1 6e3445fe213f0c549348f884e06f0e761d507d32 MANIFEST
+SHA1 2a09d67d6116f0863e3260c0c6fc2ace4c7300b3 META.yml
+SHA1 5391cc35db658809505db2be59d47aa2f073c376 Makefile.PL
+SHA1 c7013f00b5ca39fe87f8a40e79274129ea1d378d README
+SHA1 517832230e29ff1d48b465a5605d242dbb27f358 inc/Module/AutoInstall.pm
+SHA1 7ba8556ded0e1b8465b2ebe703e073b416d454d7 inc/Module/Install.pm
+SHA1 5580f47c04e225825aa16235c63d57028251f76f inc/Module/Install/AutoInstall.pm
+SHA1 c04f94f91fa97b9f8cfb5a36071098ab0e6c78e3 inc/Module/Install/AutoManifest.pm
+SHA1 69a3a256888658cbbe0164171744838e53dc06e3 inc/Module/Install/Base.pm
+SHA1 17be8c56d695ed14cf77e37542438a5eebf1c9e1 inc/Module/Install/Can.pm
+SHA1 b842371af51441beb020ce37349f96123841f684 inc/Module/Install/Fetch.pm
+SHA1 29f6c217d420ca8c44977dad69a873c328ed6efc inc/Module/Install/Include.pm
+SHA1 474ff5d11d1dd3327487f13d44d3c7b3945050a8 inc/Module/Install/Makefile.pm
+SHA1 fdf68f7c27a463011640b0739299834a65268056 inc/Module/Install/Metadata.pm
+SHA1 3b9281ddf7dd6d6f5de0a9642c69333023193c80 inc/Module/Install/Package.pm
+SHA1 9de7b5129351499c048328dfa718d0eab557cf30 inc/Module/Install/TrustMetaYml.pm
+SHA1 fe19e1641d3642424ba4088909e0f2e05747c76f inc/Module/Install/Win32.pm
+SHA1 b71a7355e7c74219f0d24aedf057121981ff0f95 inc/Module/Install/WriteAll.pm
+SHA1 26d58a041cd6b3d21db98b32e8fd1841aae21204 inc/Module/Package.pm
+SHA1 8d909d81d2f98514d42f67a972a489ff624a4183 inc/Module/Package/Dist/RDF.pm
+SHA1 9e4c6ec36a1ae5a17f7f0aab87608fcc230107eb inc/Scalar/Util.pm
+SHA1 5eae2f71c45a996a296d2445b18d0589307111f0 inc/Scalar/Util/PP.pm
+SHA1 c46ed8c38c12ffed8f6cefc5e929405cd30f99d9 inc/YAML/Tiny.pm
+SHA1 d6af6cc85d08e4020e928090b33dad2eb314711f inc/utf8.pm
+SHA1 15df19d7bde1098393c299e7a369d22037add3d7 lib/URI/Namespace.pm
+SHA1 ff34d6803289c74f17b11d9a35db4162d9a8dd99 lib/URI/NamespaceMap.pm
+SHA1 4176cc01a4b109aba750517a5b33afcd5f65febc meta/changes.ttl
+SHA1 b5779cbdc2a593f6fd876838ee677b9c87a3fbba meta/makefile.ttl
+SHA1 f487ae8ca9ed118823754aee9a2c5efab80837b7 meta/people.ttl
+SHA1 bb4b358c11ba8d292107fe3385fb17a3de6a9b72 meta/project.ttl
+SHA1 33f43765714af814ebefcf5d663b179afb145ef0 t/namespacemap.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iQIcBAEBAgAGBQJQPOphAAoJEH++6N86nkqlgY4QAKu4D7hlnP+nNALJcfa/WWje
+gFQjiVxt0B02RuXZf7jfbRW67BGu1L1QDbIZ1sxvFKGkMwx7J0RvzZ5khh4ObcsK
+n3ki1wA2ZiQ+FbwQBklGks/NpyVvyJoyaUJxfqxFQEPpD1SVP/KlkkMhebS6i6Lk
+rG7WWOPkSaHxZZaZuV2eHgiZOZvBm7OPzooeDdgiXsdD3GAY42L9E+wus0XKB3/Y
+ODNYkPcIlwk1RyWosmXXTlk/d2zeMB+0Y7JRwKfJ00uslmYEREAaxN8qt/swVBTF
+w5OqgNN6OubeWVn3Yf+k48eHRx4BGPk4aBmra5LLsj8pPymhy6qhBv0TinK7/4gs
+P1NT/P5eYhHEyW15X4jMM1AVs44fKbC+YeQhqoo7s8/ruV8ZTiX6Snc61DVRx4Op
+cFWAUZao1jPmVP+gP/5dF5PQ+OYHZaeFG6TG3giC3zDDA0ifHntZ/H/PEe4DxGX2
+REKeMjjdv84JAlCOcVaKseRFnCDejo4JdUX3bqnIhOpJqJH0WswT5NqcpOj/IEOL
+cTJayawNodXlvFI0H0hVRVJbDHOsbCBUW/v4vTsmbLj7KQHSJNwGbPRjxtnDzVvw
+UAEI4GKqc3PtmvnLYCF0gN97g8iQy2kplG61lO4C5KVGcrCgTlmmEeaj0UP3bCl/
+mWfOLcocel/cuEjWc3tl
+=w8KB
+-----END PGP SIGNATURE-----
