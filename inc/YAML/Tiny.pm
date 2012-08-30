@@ -16,8 +16,7 @@ BEGIN {
 	require 5.004;
 	require Exporter;
 	require Carp;
-	$YAML::Tiny::VERSION   = '1.50';
-	# $YAML::Tiny::VERSION   = eval $YAML::Tiny::VERSION;
+	$YAML::Tiny::VERSION   = '1.43';
 	@YAML::Tiny::ISA       = qw{ Exporter  };
 	@YAML::Tiny::EXPORT    = qw{ Load Dump };
 	@YAML::Tiny::EXPORT_OK = qw{ LoadFile DumpFile freeze thaw };
@@ -28,7 +27,7 @@ BEGIN {
 
 # The character class of all characters we need to escape
 # NOTE: Inlined, since it's only used once
-# my $RE_ESCAPE = '[\\x00-\\x08\\x0b-\\x0d\\x0e-\\x1f\"\n]';
+# my $RE_ESCAPE   = '[\\x00-\\x08\\x0b-\\x0d\\x0e-\\x1f\"\n]';
 
 # Printed form of the unprintable characters in the lowest range
 # of ASCII characters, listed by ASCII ordinal position.
@@ -96,87 +95,79 @@ sub read_string {
 	my $class  = ref $_[0] ? ref shift : shift;
 	my $self   = bless [], $class;
 	my $string = $_[0];
-	eval {
-		unless ( defined $string ) {
-			die \"Did not provide a string to load";
-		}
-
-		# Byte order marks
-		# NOTE: Keeping this here to educate maintainers
-		# my %BOM = (
-		#     "\357\273\277" => 'UTF-8',
-		#     "\376\377"     => 'UTF-16BE',
-		#     "\377\376"     => 'UTF-16LE',
-		#     "\377\376\0\0" => 'UTF-32LE'
-		#     "\0\0\376\377" => 'UTF-32BE',
-		# );
-		if ( $string =~ /^(?:\376\377|\377\376|\377\376\0\0|\0\0\376\377)/ ) {
-			die \"Stream has a non UTF-8 BOM";
-		} else {
-			# Strip UTF-8 bom if found, we'll just ignore it
-			$string =~ s/^\357\273\277//;
-		}
-
-		# Try to decode as utf8
-		utf8::decode($string) if HAVE_UTF8;
-
-		# Check for some special cases
-		return $self unless length $string;
-		unless ( $string =~ /[\012\015]+\z/ ) {
-			die \"Stream does not end with newline character";
-		}
-
-		# Split the file into lines
-		my @lines = grep { ! /^\s*(?:\#.*)?\z/ }
-			    split /(?:\015{1,2}\012|\015|\012)/, $string;
-
-		# Strip the initial YAML header
-		@lines and $lines[0] =~ /^\%YAML[: ][\d\.]+.*\z/ and shift @lines;
-
-		# A nibbling parser
-		while ( @lines ) {
-			# Do we have a document header?
-			if ( $lines[0] =~ /^---\s*(?:(.+)\s*)?\z/ ) {
-				# Handle scalar documents
-				shift @lines;
-				if ( defined $1 and $1 !~ /^(?:\#.+|\%YAML[: ][\d\.]+)\z/ ) {
-					push @$self, $self->_read_scalar( "$1", [ undef ], \@lines );
-					next;
-				}
-			}
-
-			if ( ! @lines or $lines[0] =~ /^(?:---|\.\.\.)/ ) {
-				# A naked document
-				push @$self, undef;
-				while ( @lines and $lines[0] !~ /^---/ ) {
-					shift @lines;
-				}
-
-			} elsif ( $lines[0] =~ /^\s*\-/ ) {
-				# An array at the root
-				my $document = [ ];
-				push @$self, $document;
-				$self->_read_array( $document, [ 0 ], \@lines );
-
-			} elsif ( $lines[0] =~ /^(\s*)\S/ ) {
-				# A hash at the root
-				my $document = { };
-				push @$self, $document;
-				$self->_read_hash( $document, [ length($1) ], \@lines );
-
-			} else {
-				die \"YAML::Tiny failed to classify the line '$lines[0]'";
-			}
-		}
-	};
-	if ( ref $@ eq 'SCALAR' ) {
-		return $self->_error(${$@});
-	} elsif ( $@ ) {
-		require Carp;
-		Carp::croak($@);
+	unless ( defined $string ) {
+		return $self->_error("Did not provide a string to load");
 	}
 
-	return $self;
+	# Byte order marks
+	# NOTE: Keeping this here to educate maintainers
+	# my %BOM = (
+	#     "\357\273\277" => 'UTF-8',
+	#     "\376\377"     => 'UTF-16BE',
+	#     "\377\376"     => 'UTF-16LE',
+	#     "\377\376\0\0" => 'UTF-32LE'
+	#     "\0\0\376\377" => 'UTF-32BE',
+	# );
+	if ( $string =~ /^(?:\376\377|\377\376|\377\376\0\0|\0\0\376\377)/ ) {
+		return $self->_error("Stream has a non UTF-8 BOM");
+	} else {
+		# Strip UTF-8 bom if found, we'll just ignore it
+		$string =~ s/^\357\273\277//;
+	}
+
+	# Try to decode as utf8
+	utf8::decode($string) if HAVE_UTF8;
+
+	# Check for some special cases
+	return $self unless length $string;
+	unless ( $string =~ /[\012\015]+\z/ ) {
+		return $self->_error("Stream does not end with newline character");
+	}
+
+	# Split the file into lines
+	my @lines = grep { ! /^\s*(?:\#.*)?\z/ }
+	            split /(?:\015{1,2}\012|\015|\012)/, $string;
+
+	# Strip the initial YAML header
+	@lines and $lines[0] =~ /^\%YAML[: ][\d\.]+.*\z/ and shift @lines;
+
+	# A nibbling parser
+	while ( @lines ) {
+		# Do we have a document header?
+		if ( $lines[0] =~ /^---\s*(?:(.+)\s*)?\z/ ) {
+			# Handle scalar documents
+			shift @lines;
+			if ( defined $1 and $1 !~ /^(?:\#.+|\%YAML[: ][\d\.]+)\z/ ) {
+				push @$self, $self->_read_scalar( "$1", [ undef ], \@lines );
+				next;
+			}
+		}
+
+		if ( ! @lines or $lines[0] =~ /^(?:---|\.\.\.)/ ) {
+			# A naked document
+			push @$self, undef;
+			while ( @lines and $lines[0] !~ /^---/ ) {
+				shift @lines;
+			}
+
+		} elsif ( $lines[0] =~ /^\s*\-/ ) {
+			# An array at the root
+			my $document = [ ];
+			push @$self, $document;
+			$self->_read_array( $document, [ 0 ], \@lines );
+
+		} elsif ( $lines[0] =~ /^(\s*)\S/ ) {
+			# A hash at the root
+			my $document = { };
+			push @$self, $document;
+			$self->_read_hash( $document, [ length($1) ], \@lines );
+
+		} else {
+			Carp::croak("YAML::Tiny failed to classify the line '$lines[0]'");
+		}
+	}
+
+	$self;
 }
 
 # Deparse a scalar string to the actual scalar
@@ -190,7 +181,7 @@ sub _read_scalar {
 	return undef if $string eq '~';
 
 	# Single quote
-	if ( $string =~ /^\'(.*?)\'(?:\s+\#.*)?\z/ ) {
+	if ( $string =~ /^\'(.*?)\'\z/ ) {
 		return '' unless defined $1;
 		$string = $1;
 		$string =~ s/\'\'/\'/g;
@@ -202,7 +193,7 @@ sub _read_scalar {
 	# engine due to recursion and backtracking problems on strings
 	# larger than 32,000ish characters. Keep it for reference purposes.
 	# if ( $string =~ /^\"((?:\\.|[^\"])*)\"\z/ ) {
-	if ( $string =~ /^\"([^\\"]*(?:\\.[^\\"]*)*)\"(?:\s+\#.*)?\z/ ) {
+	if ( $string =~ /^\"([^\\"]*(?:\\.[^\\"]*)*)\"\z/ ) {
 		# Reusing the variable is a little ugly,
 		# but avoids a new variable and a string copy.
 		$string = $1;
@@ -213,32 +204,22 @@ sub _read_scalar {
 
 	# Special cases
 	if ( $string =~ /^[\'\"!&]/ ) {
-		die \"YAML::Tiny does not support a feature in line '$string'";
+		Carp::croak("YAML::Tiny does not support a feature in line '$lines->[0]'");
 	}
-	return {} if $string =~ /^{}(?:\s+\#.*)?\z/;
-	return [] if $string =~ /^\[\](?:\s+\#.*)?\z/;
+	return {} if $string eq '{}';
+	return [] if $string eq '[]';
 
 	# Regular unquoted string
-	if ( $string !~ /^[>|]/ ) {
-		if (
-			$string =~ /^(?:-(?:\s|$)|[\@\%\`])/
-			or
-			$string =~ /:(?:\s|$)/
-		) {
-			die \"YAML::Tiny found illegal characters in plain scalar: '$string'";
-		}
-		$string =~ s/\s+#.*\z//;
-		return $string;
-	}
+	return $string unless $string =~ /^[>|]/;
 
 	# Error
-	die \"YAML::Tiny failed to find multi-line scalar content" unless @$lines;
+	Carp::croak("YAML::Tiny failed to find multi-line scalar content") unless @$lines;
 
 	# Check the indent depth
 	$lines->[0]   =~ /^(\s*)/;
 	$indent->[-1] = length("$1");
 	if ( defined $indent->[-2] and $indent->[-1] <= $indent->[-2] ) {
-		die \"YAML::Tiny found bad indenting in line '$lines->[0]'";
+		Carp::croak("YAML::Tiny found bad indenting in line '$lines->[0]'");
 	}
 
 	# Pull the lines
@@ -272,7 +253,7 @@ sub _read_array {
 		if ( length($1) < $indent->[-1] ) {
 			return 1;
 		} elsif ( length($1) > $indent->[-1] ) {
-			die \"YAML::Tiny found bad indenting in line '$lines->[0]'";
+			Carp::croak("YAML::Tiny found bad indenting in line '$lines->[0]'");
 		}
 
 		if ( $lines->[0] =~ /^(\s*\-\s+)[^\'\"]\S*\s*:(?:\s+|$)/ ) {
@@ -309,7 +290,7 @@ sub _read_array {
 				$self->_read_hash( $array->[-1], [ @$indent, length("$1") ], $lines );
 
 			} else {
-				die \"YAML::Tiny failed to classify line '$lines->[0]'";
+				Carp::croak("YAML::Tiny failed to classify line '$lines->[0]'");
 			}
 
 		} elsif ( defined $indent->[-2] and $indent->[-1] == $indent->[-2] ) {
@@ -323,7 +304,7 @@ sub _read_array {
 			return 1;
 
 		} else {
-			die \"YAML::Tiny failed to classify line '$lines->[0]'";
+			Carp::croak("YAML::Tiny failed to classify line '$lines->[0]'");
 		}
 	}
 
@@ -348,15 +329,15 @@ sub _read_hash {
 		if ( length($1) < $indent->[-1] ) {
 			return 1;
 		} elsif ( length($1) > $indent->[-1] ) {
-			die \"YAML::Tiny found bad indenting in line '$lines->[0]'";
+			Carp::croak("YAML::Tiny found bad indenting in line '$lines->[0]'");
 		}
 
 		# Get the key
-		unless ( $lines->[0] =~ s/^\s*([^\'\" ][^\n]*?)\s*:(\s+(?:\#.*)?|$)// ) {
+		unless ( $lines->[0] =~ s/^\s*([^\'\" ][^\n]*?)\s*:(\s+|$)// ) {
 			if ( $lines->[0] =~ /^\s*[?\'\"]/ ) {
-				die \"YAML::Tiny does not support a feature in line '$lines->[0]'";
+				Carp::croak("YAML::Tiny does not support a feature in line '$lines->[0]'");
 			}
-			die \"YAML::Tiny failed to classify line '$lines->[0]'";
+			Carp::croak("YAML::Tiny failed to classify line '$lines->[0]'");
 		}
 		my $key = $1;
 
@@ -459,7 +440,7 @@ sub _write_scalar {
 		$string =~ s/([\x00-\x1f])/\\$UNPRINTABLE[ord($1)]/g;
 		return qq|"$string"|;
 	}
-	if ( $string =~ /(?:^\W|\s|:\z)/ or $QUOTE{$string} ) {
+	if ( $string =~ /(?:^\W|\s)/ or $QUOTE{$string} ) {
 		return "'$string'";
 	}
 	return $string;
@@ -610,16 +591,15 @@ sub LoadFile {
 # Use Scalar::Util if possible, otherwise emulate it
 
 BEGIN {
-	local $@;
 	eval {
 		require Scalar::Util;
 	};
-	if ( $@ or $Scalar::Util::VERSION < 1.18 ) {
-		eval <<'END_PERL' if $@;
-# Scalar::Util failed to load or too old
+	if ( $@ ) {
+		# Failed to load Scalar::Util
+		eval <<'END_PERL';
 sub refaddr {
 	my $pkg = ref($_[0]) or return undef;
-	if ( !! UNIVERSAL::can($_[0], 'can') ) {
+	if (!!UNIVERSAL::can($_[0], 'can')) {
 		bless $_[0], 'Scalar::Util::Fake';
 	} else {
 		$pkg = undef;
@@ -631,7 +611,7 @@ sub refaddr {
 }
 END_PERL
 	} else {
-		*refaddr = *Scalar::Util::refaddr;
+		Scalar::Util->import('refaddr');
 	}
 }
 
@@ -639,4 +619,4 @@ END_PERL
 
 __END__
 
-#line 1174
+#line 1145
