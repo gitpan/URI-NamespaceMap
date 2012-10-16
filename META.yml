@@ -2,6 +2,7 @@
 abstract: 'Namespace manipulation and prefix mapping for XML, RDF, etc.'
 author:
   - 'Chris Prather <chris@prather.org>'
+  - 'Dorian Taylor <dorian@cpan.org>'
   - 'Gregory Todd Williams <gwilliams@cpan.org>'
   - 'Kjetil Kjernsmo <kjetilk@cpan.org>'
 build_requires:
@@ -31,4 +32,4 @@ requires:
 resources:
   bugtracker: https://github.com/kjetilk/URI-NamespaceMap/issues
   license: http://dev.perl.org/licenses/
-version: 0.02
+version: 0.03_1
