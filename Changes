@@ -7,6 +7,10 @@ Maintainer:   Gregory Todd Williams <mailto:gwilliams@cpan.org>
 Maintainer:   Chris Prather <mailto:chris@prather.org>
 Maintainer:   Kjetil Kjernsmo <mailto:kjetilk@cpan.org>
 
+0.06  2012-11-28  # Bugfix release.
+
+ - (Bugfix) URI::Namespace must be used from URI::NamespaceMap.
+
 0.04  2012-10-23  # Reverse lookups.
 
  - (Addition) Adding reverse lookups, i.e. abbreviation and prefix_for.

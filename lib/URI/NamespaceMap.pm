@@ -1,6 +1,7 @@
 package URI::NamespaceMap;
 use Moose;
 use Moose::Util::TypeConstraints;
+use URI::Namespace;
 
 
 =head1 NAME
@@ -9,11 +10,11 @@ URI::NamespaceMap - Class holding a collection of namespaces
 
 =head1 VERSION
 
-Version 0.04
+Version 0.06
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.06';
 
 
 =head1 SYNOPSIS

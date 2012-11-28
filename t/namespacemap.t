@@ -2,8 +2,10 @@ use Test::More;
 
 use strict;
 use URI;
-use URI::Namespace ; #qw(rdf xsd);
-use URI::NamespaceMap ;
+
+use_ok('URI::NamespaceMap');
+use_ok('URI::Namespace');
+
 
 my $foaf	= URI::Namespace->new( 'http://xmlns.com/foaf/0.1/' );
 
