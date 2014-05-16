@@ -2,7 +2,7 @@ NAME
     URI::NamespaceMap - Class holding a collection of namespaces
 
 VERSION
-    Version 0.06
+    Version 0.07_1
 
 SYNOPSIS
       use URI::NamespaceMap;
@@ -18,7 +18,7 @@ DESCRIPTION
     creating URI::Namespace objects and for serializing.
 
 METHODS
-    "new ( [ \%namespaces ] )"
+    "new ( [ \%namespaces | @prefixes | @uris ] )"
         Returns a new namespace map object. You can pass a hash reference
         with mappings from local names to namespace URIs (given as string or
         RDF::Trine::Node::Resource) or namespaces_map with a hashref.
@@ -78,7 +78,8 @@ SUPPORT
         perldoc URI::NamespaceMap
 
 COPYRIGHT & LICENSE
-    Copyright 2012 Gregory Todd Williams, Chris Prather and Kjetil Kjernsmo
+    Copyright 2012-2014 Gregory Todd Williams, Chris Prather and Kjetil
+    Kjernsmo
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

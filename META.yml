@@ -12,7 +12,7 @@ configure_requires:
   ExtUtils::MakeMaker: 6.36
 distribution_type: module
 dynamic_config: 0
-generated_by: 'Module::Install version 1.04'
+generated_by: 'Module::Install version 1.06'
 keywords: []
 license: perl
 meta-spec:
@@ -25,11 +25,17 @@ no_index:
     - inc
     - t
     - xt
+recommends:
+  RDF::NS: 0
+  RDF::Prefixes: 0
+  XML::CommonNS: 0
 requires:
   Moose: 0
   URI: 1.52
   perl: 5.005
 resources:
   bugtracker: https://github.com/kjetilk/URI-NamespaceMap/issues
+  homepage: https://metacpan.org/module/URI::NamespaceMap
   license: http://dev.perl.org/licenses/
-version: 0.06
+  repository: https://github.com/kjetilk/URI-NamespaceMap/
+version: 0.07_1

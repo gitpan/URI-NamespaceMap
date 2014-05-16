@@ -1,8 +1,9 @@
 package URI::NamespaceMap;
 use Moose;
 use Moose::Util::TypeConstraints;
+use Module::Load::Conditional qw[can_load];
 use URI::Namespace;
-
+use Carp;
 
 =head1 NAME
 
@@ -10,11 +11,11 @@ URI::NamespaceMap - Class holding a collection of namespaces
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07_1
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07_1';
 
 
 =head1 SYNOPSIS
@@ -36,7 +37,7 @@ This module provides an object to manage multiple namespaces for creating L<URI:
 
 =over
 
-=item C<< new ( [ \%namespaces ] ) >>
+=item C<< new ( [ \%namespaces | @prefixes | @uris ] ) >>
 
 Returns a new namespace map object. You can pass a hash reference with
 mappings from local names to namespace URIs (given as string or
@@ -69,6 +70,9 @@ Returns an array of prefixes.
 
 around BUILDARGS => sub {
 	my ($next, $self, @parameters) = @_;
+	if (ref($parameters[0]) eq 'ARRAY') {
+		return { namespace_map => $self->_guess(@{$parameters[0]}) };
+	}
 	return $self->$next(@parameters) if (@parameters > 1);
 	return $self->$next(@parameters) if (exists $parameters[0]->{namespace_map});
 	return { namespace_map => $parameters[0] };
@@ -126,7 +130,7 @@ sub uri {
 	}
 	return unless (blessed($ns));
 	if ($local ne '') {
-		return $ns->$local();
+		return $ns->_uri($local);
 	} else {
 		return $ns->uri
 	}
@@ -242,6 +246,52 @@ sub AUTOLOAD {
 	return $ns;
 }
 
+sub _guess {
+	my ($self, @data) = @_;
+	my $xmlns = 0; #can_load( modules => { 'XML::CommonNS' => 0 } );
+	my $rdfns = can_load( modules => { 'RDF::NS' => 0 } );
+	my $rdfpr = can_load( modules => { 'RDF::Prefixes' => 0 } );
+
+	confess 'To resolve an array, you need either XML::CommonNS, RDF::NS or RDF::Prefixes' unless ($xmlns || $rdfns || $rdfpr);
+	my %namespaces;
+
+	foreach my $entry (@data) {
+
+		if ($entry =~ m/^[a-z]\w+$/i) {
+			# This is a prefix
+			carp "Cannot resolve '$entry' without XML::CommonNS or RDF::NS" unless ($xmlns || $rdfns);
+			if ($xmlns) {
+			  require XML::CommonNS;
+			  XML::CommonNS->import(':all');
+			  $namespaces{$entry} = XML::CommonNS->uri(uc($entry))->toString;
+			}
+			if ((! $namespaces{$entry}) && $rdfns) {
+				my $ns = RDF::NS->new;
+				$namespaces{$entry} = $ns->SELECT($entry);
+			}
+			carp "Cannot resolve '$entry'" unless $namespaces{$entry};
+		} else {
+			# Lets assume a URI string
+			carp "Cannot resolve '$entry' without RDF::NS or RDF::Prefixes" unless ($rdfns || $rdfpr);
+			my $prefix;
+			if ($rdfns) {
+				my $ns = RDF::NS->new;
+				$prefix = $ns->PREFIX($entry);
+			}
+			if ((! $prefix) && ($rdfpr)) {
+				my $context = RDF::Prefixes->new;
+				$prefix = $context->get_prefix($entry);
+			}
+			unless ($prefix) {
+				carp "Cannot resolve '$entry'";
+			} else {
+				$namespaces{$prefix} = $entry;
+			}
+		}
+	}
+	return \%namespaces;
+}
+
 
 =back
 
@@ -275,7 +325,7 @@ You can find documentation for this module with the perldoc command.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2012 Gregory Todd Williams, Chris Prather and Kjetil Kjernsmo
+Copyright 2012-2014 Gregory Todd Williams, Chris Prather and Kjetil Kjernsmo
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

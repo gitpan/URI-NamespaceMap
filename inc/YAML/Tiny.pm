@@ -16,7 +16,7 @@ BEGIN {
 	require 5.004;
 	require Exporter;
 	require Carp;
-	$YAML::Tiny::VERSION   = '1.50';
+	$YAML::Tiny::VERSION   = '1.51';
 	# $YAML::Tiny::VERSION   = eval $YAML::Tiny::VERSION;
 	@YAML::Tiny::ISA       = qw{ Exporter  };
 	@YAML::Tiny::EXPORT    = qw{ Load Dump };
@@ -614,8 +614,9 @@ BEGIN {
 	eval {
 		require Scalar::Util;
 	};
-	if ( $@ or $Scalar::Util::VERSION < 1.18 ) {
-		eval <<'END_PERL' if $@;
+	my $v = eval("$Scalar::Util::VERSION") || 0;
+	if ( $@ or $v < 1.18 ) {
+		eval <<'END_PERL';
 # Scalar::Util failed to load or too old
 sub refaddr {
 	my $pkg = ref($_[0]) or return undef;
@@ -639,4 +640,4 @@ END_PERL
 
 __END__
 
-#line 1174
+#line 1175

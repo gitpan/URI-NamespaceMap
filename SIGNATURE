@@ -14,53 +14,53 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 af32e1ac09fd12a2403e142ee93a8eab8cccc0da Changes
-SHA1 ed6244b0ee8343f390b4a0841f817e9cb5648225 LICENSE
-SHA1 6e3445fe213f0c549348f884e06f0e761d507d32 MANIFEST
-SHA1 1b8ac79ecec4c4efca61d431d05f750606ef4702 META.yml
+SHA1 ed8178ce7301ddf585143a0fabf48e624975fe0f Changes
+SHA1 f1851c9068bd5d2f8c68b0992b0bcd54c1de42a7 LICENSE
+SHA1 e0d5e489da61c37793220383de3c7e17b420b304 MANIFEST
+SHA1 74eb452f5867bdd5a5d2be5cd525d934d750b98c META.yml
 SHA1 7150e5e086ef493e1e527a1eeec44a8344b80db6 Makefile.PL
-SHA1 35426a68af0d8de8ca55e6ff5a773a31496e0da0 README
-SHA1 517832230e29ff1d48b465a5605d242dbb27f358 inc/Module/AutoInstall.pm
-SHA1 7ba8556ded0e1b8465b2ebe703e073b416d454d7 inc/Module/Install.pm
-SHA1 5580f47c04e225825aa16235c63d57028251f76f inc/Module/Install/AutoInstall.pm
+SHA1 1d72315c683e43066b45c4ee7fe40c3b8e26f57a README
+SHA1 06c410f05488c1612ed66b06d3a86b2580581e4a inc/Module/AutoInstall.pm
+SHA1 8a924add836b60fb23b25c8506d45945e02f42f4 inc/Module/Install.pm
+SHA1 61ab1dd37e33ddbe155907ce51df8a3e56ac8bbf inc/Module/Install/AutoInstall.pm
 SHA1 c04f94f91fa97b9f8cfb5a36071098ab0e6c78e3 inc/Module/Install/AutoManifest.pm
-SHA1 69a3a256888658cbbe0164171744838e53dc06e3 inc/Module/Install/Base.pm
-SHA1 17be8c56d695ed14cf77e37542438a5eebf1c9e1 inc/Module/Install/Can.pm
-SHA1 b842371af51441beb020ce37349f96123841f684 inc/Module/Install/Fetch.pm
-SHA1 29f6c217d420ca8c44977dad69a873c328ed6efc inc/Module/Install/Include.pm
-SHA1 474ff5d11d1dd3327487f13d44d3c7b3945050a8 inc/Module/Install/Makefile.pm
-SHA1 fdf68f7c27a463011640b0739299834a65268056 inc/Module/Install/Metadata.pm
+SHA1 2d0fad3bf255f8c1e7e1e34eafccc4f595603ddc inc/Module/Install/Base.pm
+SHA1 f0e01fff7d73cd145fbf22331579918d4628ddb0 inc/Module/Install/Can.pm
+SHA1 7328966e4fda0c8451a6d3850704da0b84ac1540 inc/Module/Install/Fetch.pm
+SHA1 66d3d335a03492583a3be121a7d888f63f08412c inc/Module/Install/Include.pm
+SHA1 b62ca5e2d58fa66766ccf4d64574f9e1a2250b34 inc/Module/Install/Makefile.pm
+SHA1 1aa925be410bb3bfcd84a16985921f66073cc1d2 inc/Module/Install/Metadata.pm
 SHA1 3b9281ddf7dd6d6f5de0a9642c69333023193c80 inc/Module/Install/Package.pm
 SHA1 9de7b5129351499c048328dfa718d0eab557cf30 inc/Module/Install/TrustMetaYml.pm
-SHA1 fe19e1641d3642424ba4088909e0f2e05747c76f inc/Module/Install/Win32.pm
-SHA1 b71a7355e7c74219f0d24aedf057121981ff0f95 inc/Module/Install/WriteAll.pm
+SHA1 e4196994fa75e98bdfa2be0bdeeffef66de88171 inc/Module/Install/Win32.pm
+SHA1 c3a6d0d5b84feb3280622e9599e86247d58b0d18 inc/Module/Install/WriteAll.pm
 SHA1 26d58a041cd6b3d21db98b32e8fd1841aae21204 inc/Module/Package.pm
-SHA1 8d909d81d2f98514d42f67a972a489ff624a4183 inc/Module/Package/Dist/RDF.pm
-SHA1 9e4c6ec36a1ae5a17f7f0aab87608fcc230107eb inc/Scalar/Util.pm
-SHA1 5eae2f71c45a996a296d2445b18d0589307111f0 inc/Scalar/Util/PP.pm
-SHA1 c46ed8c38c12ffed8f6cefc5e929405cd30f99d9 inc/YAML/Tiny.pm
+SHA1 c18deb3025b83dda8ac7c97f1e29599e1d2c7378 inc/Module/Package/Dist/RDF.pm
+SHA1 0e0eed2e69d9583081868cf4f220068d0a018568 inc/Scalar/Util.pm
+SHA1 feb933cefe2e3762e8322bd6071a2499f3440da1 inc/YAML/Tiny.pm
 SHA1 d6af6cc85d08e4020e928090b33dad2eb314711f inc/utf8.pm
-SHA1 73db7da22b7ded5ba981ec720cf54a1a818b42e8 lib/URI/Namespace.pm
-SHA1 ba0af83fda38d15ed68a156b3f57a7fbd9109a42 lib/URI/NamespaceMap.pm
-SHA1 abffe28f2e7823d8cf6c8820cfc9fc4a19c4b262 meta/changes.ttl
-SHA1 8c91aaef9bd53ccece83717192336adc715b3d11 meta/makefile.ttl
+SHA1 767e17b083bd985b841cd30cab32a0ddf6d8ac4e lib/URI/Namespace.pm
+SHA1 b6ec42654582aa1f97734358193e4fadc9257217 lib/URI/NamespaceMap.pm
+SHA1 921e179dae3b21499bed581145b4f4bf9c498293 meta/changes.ttl
+SHA1 2886bc1b44a90d69f7c58d19e8e18dcd2bcc26a8 meta/makefile.ttl
 SHA1 e7fd3d82c4d98939ad1784d5436dd18fa6dcc6a4 meta/people.ttl
-SHA1 0300c0645ab3486403e366f28be72330f5ffebd8 meta/project.ttl
+SHA1 a1676ba082a6c628192ffe072660dcdbeb113067 meta/project.ttl
 SHA1 1f5e84698347604ae40c03a83c1c00db3746313c t/namespacemap.t
+SHA1 72c9af560a1276ce1cd93c4eb04fc0457277777d t/prefixguess.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.11 (GNU/Linux)
+Version: GnuPG v1.4.12 (GNU/Linux)
 
-iQIcBAEBAgAGBQJQtmSVAAoJEH++6N86nkqlMXAP/RsfNXu71RAF8Mz8JK1zqqkN
-PBYcdmo/wOyEb3tyFscQjbkE8BTFYdaSm91CvdEwYyKKhaHekWufBpLj9TWxag3t
-cK9YvDU6xvVWX+4AumHd6p2h27zZeuJKJaXy+m6x345p3w/QsGOQ36xxgjgA+KIA
-V0nzorfZUW/T8f0Di8UtCpT+KFgMRJrN5c0J8kx5nu9Xch8NpJrw9ISGorYECWkr
-/K60PDEOHN0V04PIb9ny1CHNWX8qA8NSHjVo6iZcapVHr1Wd+ZYbo22nevf2RY/I
-PKpOzksqdjDeKr0s2NmRhkI2jGHI3aylU+yuMzOPpSzn1B8X2Iy7oUJTus15CiCH
-8Dho5WtHveDT37lMffEVEQPlA4MsGzDRqoGNxIASl2jXTQoOPUdQaJyTkhCQ1Ol0
-s2pK1Ttcaya2g/CRdh4EnKHCrSDMj9i5ooWmr5n4J8Of80ILvNXXcUMIG0HfGozH
-GCZ4B1o3+E0noVIxbKNXwQVhmSch3IMaHlkrhrZFNfpgrI7y65ENdtNn6MMM94SY
-sJYQ+lNVdy/UgWQNAHHHArimuDnlnTEWJ6Iq0vZLsNldYUq3HysYIcI0CW7QoKSh
-VbkBa/rKDjZQ5Ii2DoHdU/7gsDYyYSn1l51zoaPuKpxt1rOz/DBE+NBW5K3C+k76
-rLfosVvQc4o19+NwK0N5
-=lkaI
+iQIcBAEBAgAGBQJTdnudAAoJEH++6N86nkqlbykP/3HW3DyX/Q2xaB0sWd7VNO91
+NH3ial4clCGOBKPHM3/20SGfttFQrD+t7GcvUzOTXZkAAnzPEjF/cBfOWA4SL1wB
+9zUTiJMmuxO7vEFUX50SpesYFeW+IKME2DTUOEcVSmGWI4fswQOn7MhsOo5c0snY
+Vrr8oJHACuFVbt/mWwgAjRKLCrrDZ416q3OWa3kw/9/fr01k0GkyBQO9W8mNttFx
+N2QJFH0h3w+tclwlQOB9K1Hh7B1ICY1wFZ+Na2tM/0fyPC/KPd+gY5vCEzwj3yI2
+BBLzl5vAs2b0IGTtTrm+fEonxB+U4Ua8skZcXXGtMZqeHt2/oAd3V0gYDHwKcAdb
++iZ5S6xmZMqWgtM5ZH1LbjaJLVbQLCa6cSTOWGPfuFvF/p9C8hYE/TqQcc/g59uD
+EP7bwNEB33u0d13h6u0paYFdo6IMXbruQQH+n9fgl0pmLOuwP8CkBDRcpjSSuQwB
+kfd9Gr1Sql6rng7xtsG4cHc2pynh5z97PIaxIyg9kRpIL6AFXEB2aHFHqWxTETib
+XSVpamT9sIrZicyBVm15ArASMfIVCwVehOoGdnWRPbcFcPI0VTfxQpGp4+DCUE1i
+mIlpdHzpyKwrCObZkucfCQ+sooGnc9oe+YSv/laG1+k2Fz5LmogVXtFSMV1Gv2+t
+yJXLOpeXKkAPf2EGLVu0
+=Sozb
 -----END PGP SIGNATURE-----
