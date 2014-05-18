@@ -8,7 +8,7 @@ Maintainer:   Gregory Todd Williams <mailto:gwilliams@cpan.org>
 Maintainer:   Chris Prather <mailto:chris@prather.org>
 Maintainer:   Kjetil Kjernsmo <mailto:kjetilk@cpan.org>
 
-0.07_1  2014-05-16  # Dev release of prefix guessing code.
+0.07_2  2014-05-18  # Dev release of prefix guessing code.
 
  - (Addition) Prefix guessing user RDF::NS, RDF::Prefixes or XML::CommonNS.
  - (Bugfix) Fix breakage in terms with hyphens.

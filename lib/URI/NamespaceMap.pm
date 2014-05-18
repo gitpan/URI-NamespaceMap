@@ -4,6 +4,7 @@ use Moose::Util::TypeConstraints;
 use Module::Load::Conditional qw[can_load];
 use URI::Namespace;
 use Carp;
+use Try::Tiny;
 
 =head1 NAME
 
@@ -11,11 +12,11 @@ URI::NamespaceMap - Class holding a collection of namespaces
 
 =head1 VERSION
 
-Version 0.07_1
+Version 0.07_2
 
 =cut
 
-our $VERSION = '0.07_1';
+our $VERSION = '0.07_2';
 
 
 =head1 SYNOPSIS
@@ -248,7 +249,7 @@ sub AUTOLOAD {
 
 sub _guess {
 	my ($self, @data) = @_;
-	my $xmlns = 0; #can_load( modules => { 'XML::CommonNS' => 0 } );
+	my $xmlns = can_load( modules => { 'XML::CommonNS' => 0 } );
 	my $rdfns = can_load( modules => { 'RDF::NS' => 0 } );
 	my $rdfpr = can_load( modules => { 'RDF::Prefixes' => 0 } );
 
@@ -259,20 +260,22 @@ sub _guess {
 
 		if ($entry =~ m/^[a-z]\w+$/i) {
 			# This is a prefix
-			carp "Cannot resolve '$entry' without XML::CommonNS or RDF::NS" unless ($xmlns || $rdfns);
+			warn "Cannot resolve '$entry' without XML::CommonNS or RDF::NS" unless ($xmlns || $rdfns);
 			if ($xmlns) {
 			  require XML::CommonNS;
 			  XML::CommonNS->import(':all');
-			  $namespaces{$entry} = XML::CommonNS->uri(uc($entry))->toString;
+			  try {
+				 $namespaces{$entry} = XML::CommonNS->uri(uc($entry))->toString;
+			  }; # Then, XML::CommonNS doesn't have the prefix, which is OK, we just continue
 			}
 			if ((! $namespaces{$entry}) && $rdfns) {
 				my $ns = RDF::NS->new;
 				$namespaces{$entry} = $ns->SELECT($entry);
 			}
-			carp "Cannot resolve '$entry'" unless $namespaces{$entry};
+			warn "Cannot resolve '$entry'" unless $namespaces{$entry};
 		} else {
 			# Lets assume a URI string
-			carp "Cannot resolve '$entry' without RDF::NS or RDF::Prefixes" unless ($rdfns || $rdfpr);
+			warn "Cannot resolve '$entry' without RDF::NS or RDF::Prefixes" unless ($rdfns || $rdfpr);
 			my $prefix;
 			if ($rdfns) {
 				my $ns = RDF::NS->new;
@@ -283,7 +286,7 @@ sub _guess {
 				$prefix = $context->get_prefix($entry);
 			}
 			unless ($prefix) {
-				carp "Cannot resolve '$entry'";
+				warn "Cannot resolve '$entry'";
 			} else {
 				$namespaces{$prefix} = $entry;
 			}

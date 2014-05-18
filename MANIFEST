@@ -31,4 +31,5 @@ meta/project.ttl
 README
 SIGNATURE
 t/namespacemap.t
+t/prefixguess-none.t
 t/prefixguess.t
