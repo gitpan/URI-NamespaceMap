@@ -27,10 +27,12 @@ no_index:
     - t
     - xt
 recommends:
-  RDF::NS: 0
+  RDF::NS: 20130802
   RDF::Prefixes: 0
   XML::CommonNS: 0
 requires:
+  Carp: 0
+  Module::Load::Conditional: 0
   Moose: 0
   Try::Tiny: 0
   URI: 1.52
@@ -40,4 +42,4 @@ resources:
   homepage: https://metacpan.org/module/URI::NamespaceMap
   license: http://dev.perl.org/licenses/
   repository: https://github.com/kjetilk/URI-NamespaceMap/
-version: 0.07_2
+version: 0.08
