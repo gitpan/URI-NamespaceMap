@@ -8,26 +8,32 @@ Maintainer:   Gregory Todd Williams <mailto:gwilliams@cpan.org>
 Maintainer:   Chris Prather <mailto:chris@prather.org>
 Maintainer:   Kjetil Kjernsmo <mailto:kjetilk@cpan.org>
 
-0.08  2014-05-19  # Prefix guessing.
+0.10  2014-05-21  Compatibility with RDF::Trine::NamespaceMap.
+
+ - (Addition) Make it possible to send local part to the uri method of
+   URI::Namespace.
+   ++"Chris Prather"
+
+0.08  2014-05-19  Prefix guessing.
 
  - (Addition) Prefix guessing using RDF::NS, RDF::Prefixes or
    XML::CommonNS.
  - (Bugfix) Fix breakage in terms with hyphens.
    ++"Dorian Taylor"
 
-0.06  2012-11-28  # Bugfix release.
+0.06  2012-11-28  Bugfix release.
 
  - (Bugfix) URI::Namespace must be used from URI::NamespaceMap.
 
-0.04  2012-10-23  # Reverse lookups.
+0.04  2012-10-23  Reverse lookups.
 
  - (Addition) Adding reverse lookups, i.e. abbreviation and prefix_for.
    ++"Dorian Taylor"
  - Stop using blank node in makefile.ttl to fix version_from.
 
-0.02  2012-08-30  # Minor bugfixes.
+0.02  2012-08-30  Minor bugfixes.
 
 
-0.01  2012-08-28  # Initial release.
+0.01  2012-08-28  Initial release.
 
 

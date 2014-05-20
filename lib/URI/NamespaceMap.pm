@@ -12,11 +12,11 @@ URI::NamespaceMap - Class holding a collection of namespaces
 
 =head1 VERSION
 
-Version 0.08
+Version 0.10
 
 =cut
 
-our $VERSION = '0.08';
+our $VERSION = '0.10';
 
 
 =head1 SYNOPSIS
@@ -135,9 +135,9 @@ sub uri {
 	}
 	return unless (blessed($ns));
 	if ($local ne '') {
-		return $ns->_uri($local);
+		return $ns->uri($local);
 	} else {
-		return $ns->uri
+		return $ns->_uri
 	}
 }
 
