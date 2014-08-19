@@ -18,7 +18,6 @@ inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 inc/Module/Package.pm
 inc/Module/Package/Dist/RDF.pm
-inc/Scalar/Util.pm
 inc/YAML/Tiny.pm
 lib/URI/Namespace.pm
 lib/URI/NamespaceMap.pm

@@ -8,6 +8,14 @@ Maintainer:   Gregory Todd Williams <mailto:gwilliams@cpan.org>
 Maintainer:   Chris Prather <mailto:chris@prather.org>
 Maintainer:   Kjetil Kjernsmo <mailto:kjetilk@cpan.org>
 
+0.11_1  2014-08-19  Support IRI module.
+
+ - (Addition) Link Debian packages in metadata.
+ - (Addition) Support the new IRI module.
+   ++"Gregory Todd Williams"
+ - (Addition) Warn the user in test when they have too old RDF::NS.
+ - (Bugfix) Silence warnings when URI doesn't have local part.
+
 0.10  2014-05-21  Compatibility with RDF::Trine::NamespaceMap.
 
  - (Addition) Make it possible to send local part to the uri method of

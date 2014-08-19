@@ -9,26 +9,25 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-_:r1400624386r0 dcs:item [
-		dcs:thanks cpan:perigrin ;
+_:r1408443611r0 dcs:item [
+		dcs:blame <http://kasei.us/about/foaf.xrdf#greg> ;
 		a dcs:Addition ;
-		rdfs:label "Make it possible to send local part to the uri method of URI::Namespace."@en
-	] .
-_:r1400624386r10 doap:browse <https://github.com/kjetilk/URI-NamespaceMap/> ;
-	a doap:GitRepository .
-_:r1400624386r2 dcs:item [
-		a dcs:Addition ;
-		rdfs:label "Prefix guessing using RDF::NS, RDF::Prefixes or XML::CommonNS."@en
+		rdfs:label "Support the new IRI module."@en
 	], [
-		dcs:blame <http://doriantaylor.com/person/dorian-taylor> ;
 		a dcs:Bugfix ;
-		rdfs:label "Fix breakage in terms with hyphens."@en
+		rdfs:label "Silence warnings when URI doesn't have local part."@en
+	], [
+		a dcs:Addition ;
+		rdfs:label "Warn the user in test when they have too old RDF::NS."@en
+	], [
+		a dcs:Addition ;
+		rdfs:label "Link Debian packages in metadata."@en
 	] .
-_:r1400624386r5 dcs:item [
+_:r1408443611r10 dcs:item [
 		a dcs:Bugfix ;
 		rdfs:label "URI::Namespace must be used from URI::NamespaceMap."@en
 	] .
-_:r1400624386r7 dcs:item [
+_:r1408443611r12 dcs:item [
 		a dcs:Change ;
 		rdfs:label "Stop using blank node in makefile.ttl to fix version_from."@en
 	], [
@@ -36,11 +35,27 @@ _:r1400624386r7 dcs:item [
 		a dcs:Addition ;
 		rdfs:label "Adding reverse lookups, i.e. abbreviation and prefix_for."@en
 	] .
+_:r1408443611r15 doap:browse <https://github.com/kjetilk/URI-NamespaceMap/> ;
+	a doap:GitRepository ;
+	<http://www.w3.org/ns/prov#has_provenance> <http://git2prov.org/git2prov?giturl=https%3A%2F%2Fgithub.com%2Fkjetilk%2FURI-NamespaceMap&serialization=PROV-O#> .
+_:r1408443611r5 dcs:item [
+		dcs:thanks cpan:perigrin ;
+		a dcs:Addition ;
+		rdfs:label "Make it possible to send local part to the uri method of URI::Namespace."@en
+	] .
+_:r1408443611r7 dcs:item [
+		a dcs:Addition ;
+		rdfs:label "Prefix guessing using RDF::NS, RDF::Prefixes or XML::CommonNS."@en
+	], [
+		dcs:blame <http://doriantaylor.com/person/dorian-taylor> ;
+		a dcs:Bugfix ;
+		rdfs:label "Fix breakage in terms with hyphens."@en
+	] .
 <file:///home/kjetil/dev/URI-NamespaceMap/meta/project.ttl> <http://purl.org/dc/terms/creator> <http://www.kjetil.kjernsmo.net/foaf#me> ;
 	<http://purl.org/dc/terms/subject> dist:project ;
 	<http://purl.org/dc/terms/title> "DOAP for URI-NamespaceMap"@en .
 <http://doriantaylor.com/person/dorian-taylor> a foaf:Person ;
-	<http://www.w3.org/2002/07/owl#sameAs> cpan:dorian ;
+	<http://www.w3.org/2002/07/owl#sameAs> <http://git2prov.org/git2prov?giturl=https%3A%2F%2Fgithub.com%2Fkjetilk%2FURI-NamespaceMap&serialization=PROV-O#user-Dorian-Taylor>, cpan:dorian ;
 	foaf:mbox <mailto:dorian@cpan.org> ;
 	foaf:name "Dorian Taylor" .
 <http://kasei.us/about/foaf.xrdf#greg> a foaf:Person ;
@@ -50,7 +65,7 @@ _:r1400624386r7 dcs:item [
 dist:project cpant:all_from <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project#main> ;
 	cpant:readme_from <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project#main> ;
 	cpant:recommends "RDF::NS 20130802", "RDF::Prefixes", "XML::CommonNS" ;
-	cpant:requires "Carp", "Module::Load::Conditional", "Moose", "Try::Tiny", "URI 1.52" ;
+	cpant:requires "Carp", "IRI 0.003", "Module::Load::Conditional", "Moose", "Try::Tiny", "URI 1.52" ;
 	cpant:test_requires "Test::Exception", "Test::More 0.88" ;
 	cpant:version_from <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project#main> ;
 	doap:bug-database <https://github.com/kjetilk/URI-NamespaceMap/issues> ;
@@ -61,21 +76,13 @@ dist:project cpant:all_from <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/
 	doap:maintainer <http://kasei.us/about/foaf.xrdf#greg>, cpan:perigrin, <http://www.kjetil.kjernsmo.net/foaf#me> ;
 	doap:name "URI-NamespaceMap" ;
 	doap:programming-language "Perl" ;
-	doap:release dist:v_0.08, dist:v_0.10, dist:v_0_01, dist:v_0_02, dist:v_0_04, dist:v_0_06 ;
-	doap:repository _:r1400624386r10 ;
+	doap:release dist:v_0_01, dist:v_0_02, dist:v_0_04, dist:v_0_06, dist:v_0_08, dist:v_0_10, dist:v_0_11_1 ;
+	doap:repository _:r1408443611r15 ;
 	doap:shortdesc "Namespace manipulation and prefix mapping for XML, RDF, etc."@en ;
-	a doap:Project .
+	a doap:Project ;
+	rdfs:seeAlso <http://packages.qa.debian.org/libr/liburi-namespacemap-perl.ttl> ;
+	<http://www.w3.org/2002/07/owl#sameAs> <http://packages.qa.debian.org/liburi-namespacemap-perl#upstream> .
 <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project#main> <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "lib/URI/NamespaceMap.pm" .
-dist:v_0.08 dcs:changeset _:r1400624386r2 ;
-	<http://purl.org/dc/terms/issued> "2014-05-19"^^<http://www.w3.org/2001/XMLSchema#date> ;
-	doap:revision "0.08"^^<http://www.w3.org/2001/XMLSchema#string> ;
-	a doap:Version ;
-	rdfs:label "Prefix guessing."@en .
-dist:v_0.10 dcs:changeset _:r1400624386r0 ;
-	<http://purl.org/dc/terms/issued> "2014-05-21"^^<http://www.w3.org/2001/XMLSchema#date> ;
-	doap:revision "0.10"^^<http://www.w3.org/2001/XMLSchema#string> ;
-	a doap:Version ;
-	rdfs:label "Compatibility with RDF::Trine::NamespaceMap."@en .
 dist:v_0_01 <http://purl.org/dc/terms/issued> "2012-08-28"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	doap:revision "0.01"^^<http://www.w3.org/2001/XMLSchema#string> ;
 	a doap:Version ;
@@ -84,20 +91,36 @@ dist:v_0_02 <http://purl.org/dc/terms/issued> "2012-08-30"^^<http://www.w3.org/2
 	doap:revision "0.02"^^<http://www.w3.org/2001/XMLSchema#string> ;
 	a doap:Version ;
 	rdfs:label "Minor bugfixes."@en .
-dist:v_0_04 dcs:changeset _:r1400624386r7 ;
+dist:v_0_04 dcs:changeset _:r1408443611r12 ;
 	<http://purl.org/dc/terms/issued> "2012-10-23"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	doap:revision "0.04"^^<http://www.w3.org/2001/XMLSchema#string> ;
 	a doap:Version ;
 	rdfs:label "Reverse lookups."@en .
-dist:v_0_06 dcs:changeset _:r1400624386r5 ;
+dist:v_0_06 dcs:changeset _:r1408443611r10 ;
 	<http://purl.org/dc/terms/issued> "2012-11-28"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	doap:revision "0.06"^^<http://www.w3.org/2001/XMLSchema#string> ;
 	a doap:Version ;
 	rdfs:label "Bugfix release."@en .
+dist:v_0_08 dcs:changeset _:r1408443611r7 ;
+	<http://purl.org/dc/terms/issued> "2014-05-19"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	doap:revision "0.08"^^<http://www.w3.org/2001/XMLSchema#string> ;
+	a doap:Version ;
+	rdfs:label "Prefix guessing."@en .
+dist:v_0_10 dcs:changeset _:r1408443611r5 ;
+	<http://purl.org/dc/terms/issued> "2014-05-21"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	doap:revision "0.10"^^<http://www.w3.org/2001/XMLSchema#string> ;
+	a doap:Version ;
+	rdfs:label "Compatibility with RDF::Trine::NamespaceMap."@en .
+dist:v_0_11_1 dcs:changeset _:r1408443611r0 ;
+	<http://purl.org/dc/terms/issued> "2014-08-19"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	doap:revision "0.11_1"^^<http://www.w3.org/2001/XMLSchema#string> ;
+	a doap:Version ;
+	rdfs:label "Support IRI module."@en .
 cpan:perigrin a foaf:Person ;
+	<http://www.w3.org/2002/07/owl#sameAs> <http://git2prov.org/git2prov?giturl=https%3A%2F%2Fgithub.com%2Fkjetilk%2FURI-NamespaceMap&serialization=PROV-O#user-Chris-Prather> ;
 	foaf:mbox <mailto:chris@prather.org> ;
 	foaf:name "Chris Prather" .
 <http://www.kjetil.kjernsmo.net/foaf#me> a foaf:Person ;
-	<http://www.w3.org/2002/07/owl#sameAs> cpan:kjetilk ;
+	<http://www.w3.org/2002/07/owl#sameAs> <http://git2prov.org/git2prov?giturl=https%3A%2F%2Fgithub.com%2Fkjetilk%2FURI-NamespaceMap&serialization=PROV-O#user-Kjetil-Kjernsmo>, cpan:kjetilk ;
 	foaf:mbox <mailto:kjetilk@cpan.org> ;
 	foaf:name "Kjetil Kjernsmo" .
