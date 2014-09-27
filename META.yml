@@ -44,6 +44,6 @@ resources:
   homepage: https://metacpan.org/module/URI::NamespaceMap
   license: http://dev.perl.org/licenses/
   repository: https://github.com/kjetilk/URI-NamespaceMap/
-version: 0.11_2
+version: 0.11_3
 x_contributors:
   - 'Dorian Taylor <dorian@cpan.org>'

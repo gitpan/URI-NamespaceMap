@@ -13,7 +13,7 @@ Files: CREDITS
  Makefile.PL
  README
  SIGNATURE
- URI-NamespaceMap-0.11_1.tar.gz
+ URI-NamespaceMap-0.11_2.tar.gz
  inc/Sub/Util.pm
  lib/URI/Namespace.pm
  meta/changes.ttl
