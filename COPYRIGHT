@@ -6,12 +6,15 @@ Source: https://metacpan.org/module/URI::NamespaceMap
 Files: CREDITS
  Changes
  LICENSE
+ MANIFEST
  MANIFEST.SKIP
  META.ttl
  META.yml
  Makefile.PL
  README
  SIGNATURE
+ URI-NamespaceMap-0.11_1.tar.gz
+ inc/Sub/Util.pm
  lib/URI/Namespace.pm
  meta/changes.ttl
  meta/makefile.ttl
@@ -25,14 +28,10 @@ Files: CREDITS
 Copyright: Unknown
 License: Unknown
 
-Files: inc/Module/Install/Include.pm
+Files: inc/Module/Install.pm
+ inc/Module/Install/Include.pm
  inc/Module/Install/Metadata.pm
-Copyright: Copyright 2008 - 2014 Adam Kennedy.
-License: GPL-1.0+ or Artistic-1.0
-
-Files: inc/Module/Install/TrustMetaYml.pm
- inc/Module/Package/Dist/RDF.pm
-Copyright: This software is copyright (c) 2011-2012 by Toby Inkster.
+Copyright: Copyright 2002 - 2012 Brian Ingerson, Audrey Tang and Adam Kennedy.
 License: GPL-1.0+ or Artistic-1.0
 
 Files: lib/URI/NamespaceMap.pm
@@ -52,6 +51,17 @@ Copyright: None
 License: public-domain
 Comment: This file! Automatically generated.
 
+Files: inc/Scalar/Util.pm
+Copyright: Copyright (c) 1997-2007 Graham Barr <gbarr@pobox.com>. All rights reserved.
+ Copyright (c) 1999 Tuomas J. Lukka <lukka@iki.fi>. All rights reserved.
+ Copyright (C) 2004, 2008  Matthijs van Duin.  All rights reserved.
+ Copyright (C) 2014 cPanel Inc.  All rights reserved.
+License: GPL-1.0+ or Artistic-1.0
+
+Files: inc/Module/Install/TrustMetaYml.pm
+Copyright: This software is copyright (c) 2011 by Toby Inkster.
+License: GPL-1.0+ or Artistic-1.0
+
 Files: inc/Module/Install/Package.pm
 Copyright: Copyright (c) 2011. Ingy doet Net.
 License: GPL-1.0+ or Artistic-1.0
@@ -60,8 +70,8 @@ Files: inc/Module/Install/Base.pm
 Copyright: Copyright 2003, 2004 by Audrey Tang <autrijus@autrijus.org>.
 License: GPL-1.0+ or Artistic-1.0
 
-Files: inc/Module/Install.pm
-Copyright: Copyright 2002 - 2012 Brian Ingerson, Audrey Tang and Adam Kennedy.
+Files: inc/Module/Package/Dist/RDF.pm
+Copyright: This software is copyright (c) 2011-2012 by Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
 
 Files: inc/YAML/Tiny.pm
