@@ -8,8 +8,9 @@ Maintainer:   Gregory Todd Williams <mailto:gwilliams@cpan.org>
 Maintainer:   Chris Prather <mailto:chris@prather.org>
 Maintainer:   Kjetil Kjernsmo <mailto:kjetilk@cpan.org>
 
-0.11_3  2014-09-27  Support IRI module.
+0.12  2014-09-29  Support IRI module.
 
+ - (Addition) Link Debian packages in metadata.
  - (Addition) Support the new IRI module.
    ++"Gregory Todd Williams"
  - (Addition) Use Types::URI.

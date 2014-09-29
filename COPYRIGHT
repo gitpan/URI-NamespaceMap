@@ -3,7 +3,8 @@ Upstream-Name: URI-NamespaceMap
 Upstream-Contact: Chris Prather <chris@prather.org>
 Source: https://metacpan.org/module/URI::NamespaceMap
 
-Files: CREDITS
+Files: .travis.yml
+ CREDITS
  Changes
  LICENSE
  MANIFEST
@@ -13,7 +14,6 @@ Files: CREDITS
  Makefile.PL
  README
  SIGNATURE
- URI-NamespaceMap-0.11_2.tar.gz
  inc/Sub/Util.pm
  lib/URI/Namespace.pm
  meta/changes.ttl
@@ -21,6 +21,7 @@ Files: CREDITS
  meta/people.ttl
  meta/project.ttl
  pm_to_blib
+ t/iri.t
  t/justuri.t
  t/namespacemap.t
  t/prefixguess-none.t

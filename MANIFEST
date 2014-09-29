@@ -1,3 +1,4 @@
+.travis.yml
 Changes
 COPYRIGHT
 CREDITS
@@ -34,6 +35,7 @@ meta/people.ttl
 meta/project.ttl
 README
 SIGNATURE
+t/iri.t
 t/justuri.t
 t/namespacemap.t
 t/prefixguess-none.t
