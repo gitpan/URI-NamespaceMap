@@ -1,0 +1,95 @@
+{
+   "abstract" : "Namespace manipulation and prefix mapping for XML, RDF, etc.",
+   "author" : [
+      "Kjetil Kjernsmo <kjetilk@cpan.org>",
+      "Gregory Todd Williams <gwilliams@cpan.org>",
+      "Chris Prather (PERIGRIN) <chris@prather.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Inkt::Profile::TOBYINK version 0.016, CPAN::Meta::Converter version 2.142060",
+   "keywords" : [],
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "URI-NamespaceMap",
+   "no_index" : {
+      "directory" : [
+         "eg",
+         "examples",
+         "inc",
+         "t",
+         "xt"
+      ]
+   },
+   "optional_features" : {},
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.17"
+         }
+      },
+      "runtime" : {
+         "recommends" : {
+            "RDF::NS" : "20130802",
+            "RDF::Prefixes" : "0",
+            "XML::CommonNS" : "0"
+         },
+         "requires" : {
+            "Carp" : "0",
+            "IRI" : "0.004",
+            "Module::Load::Conditional" : "0",
+            "Moo" : "1.006000",
+            "Try::Tiny" : "0",
+            "Type::Library" : "1.000000",
+            "Types::URI" : "0.004",
+            "URI" : "1.52",
+            "namespace::autoclean" : "0.20",
+            "perl" : "5.008001"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::Exception" : "0",
+            "Test::More" : "0.88"
+         }
+      }
+   },
+   "provides" : {
+      "Types::Namespace" : {
+         "file" : "lib/Types/Namespace.pm",
+         "version" : "0.12"
+      },
+      "URI::Namespace" : {
+         "file" : "lib/URI/Namespace.pm",
+         "version" : "0.12"
+      },
+      "URI::NamespaceMap" : {
+         "file" : "lib/URI/NamespaceMap.pm",
+         "version" : "0.13_1"
+      }
+   },
+   "release_status" : "testing",
+   "resources" : {
+      "X_identifier" : "http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project",
+      "bugtracker" : {
+         "web" : "https://github.com/kjetilk/URI-NamespaceMap/issues"
+      },
+      "homepage" : "https://metacpan.org/module/URI::NamespaceMap",
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ],
+      "repository" : {
+         "type" : "git",
+         "web" : "https://github.com/kjetilk/URI-NamespaceMap/"
+      }
+   },
+   "version" : "0.13_1",
+   "x_contributors" : [
+      "Dorian Taylor <dorian@cpan.org>",
+      "Toby Inkster (TOBYINK) <tobyink@cpan.org>"
+   ]
+}
