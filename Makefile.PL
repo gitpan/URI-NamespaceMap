@@ -42,9 +42,9 @@ my $meta = {
   "provides"       => {
                         "Types::Namespace"  => { file => "lib/Types/Namespace.pm", version => 0.12 },
                         "URI::Namespace"    => { file => "lib/URI/Namespace.pm", version => 0.12 },
-                        "URI::NamespaceMap" => { file => "lib/URI/NamespaceMap.pm", version => "0.13_1" },
+                        "URI::NamespaceMap" => { file => "lib/URI/NamespaceMap.pm", version => "0.20" },
                       },
-  "release_status" => "testing",
+  "release_status" => "stable",
   "resources"      => {
                         bugtracker   => { web => "https://github.com/kjetilk/URI-NamespaceMap/issues" },
                         homepage     => "https://metacpan.org/module/URI::NamespaceMap",
@@ -55,7 +55,7 @@ my $meta = {
                                         },
                         X_identifier => "http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project",
                       },
-  "version"        => "0.13_1",
+  "version"        => "0.20",
   "x_contributors" => [
                         "Dorian Taylor <dorian\@cpan.org>",
                         "Toby Inkster (TOBYINK) <tobyink\@cpan.org>",
