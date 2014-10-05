@@ -44,7 +44,7 @@
 	doap:maintainer      <http://kasei.us/about/foaf.xrdf#greg>, <http://purl.org/NET/cpan-uri/person/perigrin>, <http://www.kjetil.kjernsmo.net/foaf#me>;
 	doap:name            "URI-NamespaceMap";
 	doap:programming-language "Perl";
-	doap:release         <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_01>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_02>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_04>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_06>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_08>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_10>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_20>;
+	doap:release         <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_01>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_02>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_04>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_06>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_08>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_10>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_12>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_20>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_21>;
 	doap:repository      [
 		a doap:GitRepository;
 		doap:browse <https://github.com/kjetilk/URI-NamespaceMap/>;
@@ -130,6 +130,12 @@
 	doap-changeset:changeset [
 		doap-changeset:item [
 			a doap-changeset:Addition;
+			rdfs:label "Warn the user in test when they have too old RDF::NS."@en;
+		], [
+			a doap-changeset:Addition;
+			rdfs:label "Use Types::URI."@en;
+		], [
+			a doap-changeset:Addition;
 			rdfs:label "Link Debian packages in metadata."@en;
 		], [
 			a doap-changeset:Addition;
@@ -138,12 +144,6 @@
 		], [
 			a doap-changeset:Bugfix;
 			rdfs:label "Silence warnings when URI doesn't have local part."@en;
-		], [
-			a doap-changeset:Addition;
-			rdfs:label "Warn the user in test when they have too old RDF::NS."@en;
-		], [
-			a doap-changeset:Addition;
-			rdfs:label "Use Types::URI."@en;
 		];
 	];
 	doap:revision        "0.12"^^xsd:string;
@@ -167,8 +167,20 @@
 			rdfs:label "Warn the user when they have too old RDF::NS but not in automated tests."@en;
 		];
 	];
-	doap:revision        "0.20"^^xsd:string;
-	owl:sameAs           <http://packages.qa.debian.org/liburi-namespacemap-perl#upstreamsrc_0.20>.
+	doap:revision        "0.20"^^xsd:string.
+
+<http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_21>
+	a                    doap:Version;
+	rdfs:label           "Fix missing Changes."@en;
+	dc:issued            "2014-10-05"^^xsd:date;
+	doap-changeset:changeset [
+		doap-changeset:item [
+			a doap-changeset:Bugfix;
+			rdfs:label "Fix missing Changes."@en;
+		];
+	];
+	doap:revision        "0.21"^^xsd:string;
+	owl:sameAs           <http://packages.qa.debian.org/liburi-namespacemap-perl#upstreamsrc_0.21>.
 
 <http://purl.org/NET/cpan-uri/person/perigrin>
 	a                    foaf:Person;

@@ -4,14 +4,11 @@ Changes
 INSTALL
 LICENSE
 MANIFEST
-MANIFEST
 META.json
 META.yml
-MYMETA.json
-MYMETA.yml
-Makefile
 Makefile.PL
 README
+README.pod
 SIGNATURE
 dist.ini
 doap.ttl
@@ -46,7 +43,6 @@ inc/YAML/Tiny.pm
 lib/Types/Namespace.pm
 lib/URI/Namespace.pm
 lib/URI/NamespaceMap.pm
-pm_to_blib
 t/iri.t
 t/justuri.t
 t/namespacemap.t

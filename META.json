@@ -69,7 +69,7 @@
       },
       "URI::NamespaceMap" : {
          "file" : "lib/URI/NamespaceMap.pm",
-         "version" : "0.20"
+         "version" : "0.21"
       }
    },
    "release_status" : "stable",
@@ -87,7 +87,7 @@
          "web" : "https://github.com/kjetilk/URI-NamespaceMap/"
       }
    },
-   "version" : "0.20",
+   "version" : "0.21",
    "x_contributors" : [
       "Dorian Taylor <dorian@cpan.org>",
       "Toby Inkster (TOBYINK) <tobyink@cpan.org>"

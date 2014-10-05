@@ -4,45 +4,62 @@ URI-NamespaceMap
 Created:      2012-08-27
 Home page:    <https://metacpan.org/module/URI::NamespaceMap>
 Bug tracker:  <https://github.com/kjetilk/URI-NamespaceMap/issues>
-Maintainer:   Gregory Todd Williams <mailto:gwilliams@cpan.org>
-Maintainer:   Chris Prather <mailto:chris@prather.org>
-Maintainer:   Kjetil Kjernsmo <mailto:kjetilk@cpan.org>
+Maintainer:   Kjetil Kjernsmo <kjetilk@cpan.org>
+Maintainer:   Gregory Todd Williams <gwilliams@cpan.org>
+Maintainer:   Chris Prather (PERIGRIN) <chris@prather.org>
 
-0.12  2014-09-29  Support IRI module.
+0.21	2014-10-05	Fix missing Changes.
 
- - (Addition) Link Debian packages in metadata.
- - (Addition) Support the new IRI module.
-   ++"Gregory Todd Williams"
- - (Addition) Use Types::URI.
- - (Addition) Warn the user in test when they have too old RDF::NS.
- - (Bugfix) Silence warnings when URI doesn't have local part.
+ [ Bug Fixes ]
+ - Fix missing Changes.
 
-0.10  2014-05-21  Compatibility with RDF::Trine::NamespaceMap.
+0.20	2014-10-05	Moo refactoring.
 
- - (Addition) Make it possible to send local part to the uri method of
+ - Added: Warn the user when they have too old RDF::NS but not in automated
+   tests.
+ - Convert packaging to Dist::Inkt.
+   Toby Inkster++
+ - Port to Moo.
+   Toby Inkster++
+
+0.12	2014-09-29	Support IRI module.
+
+ [ Bug Fixes ]
+ - Silence warnings when URI doesn't have local part.
+
+ [ Other ]
+ - Added: Link Debian packages in metadata.
+ - Added: Support the new IRI module.
+   Gregory Todd Williams++
+ - Added: Use Types::URI.
+ - Added: Warn the user in test when they have too old RDF::NS.
+
+0.10	2014-05-21	Compatibility with RDF::Trine::NamespaceMap.
+
+ - Added: Make it possible to send local part to the uri method of
    URI::Namespace.
-   ++"Chris Prather"
+   Chris Prather++
 
-0.08  2014-05-19  Prefix guessing.
+0.08	2014-05-19	Prefix guessing.
 
- - (Addition) Prefix guessing using RDF::NS, RDF::Prefixes or
-   XML::CommonNS.
- - (Bugfix) Fix breakage in terms with hyphens.
-   ++"Dorian Taylor"
+ [ Bug Fixes ]
+ - Fix breakage in terms with hyphens.
+   Dorian Taylor++
 
-0.06  2012-11-28  Bugfix release.
+ [ Other ]
+ - Added: Prefix guessing using RDF::NS, RDF::Prefixes or XML::CommonNS.
 
- - (Bugfix) URI::Namespace must be used from URI::NamespaceMap.
+0.06	2012-11-28	Bugfix release.
 
-0.04  2012-10-23  Reverse lookups.
+ [ Bug Fixes ]
+ - URI::Namespace must be used from URI::NamespaceMap.
 
- - (Addition) Adding reverse lookups, i.e. abbreviation and prefix_for.
-   ++"Dorian Taylor"
+0.04	2012-10-23	Reverse lookups.
+
+ - Added: Adding reverse lookups, i.e. abbreviation and prefix_for.
+   Dorian Taylor++
  - Stop using blank node in makefile.ttl to fix version_from.
 
-0.02  2012-08-30  Minor bugfixes.
+0.02	2012-08-30	Minor bugfixes.
 
-
-0.01  2012-08-28  Initial release.
-
-
+0.01	2012-08-28	Initial release.
