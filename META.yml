@@ -10,7 +10,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: '6.17'
 dynamic_config: 0
-generated_by: 'Dist::Inkt::Profile::TOBYINK version 0.016, CPAN::Meta::Converter version 2.142060'
+generated_by: 'Dist::Inkt::Profile::TOBYINK version 0.023, CPAN::Meta::Converter version 2.142060'
 keywords: []
 license: perl
 meta-spec:
@@ -34,7 +34,7 @@ provides:
     version: '0.12'
   URI::NamespaceMap:
     file: lib/URI/NamespaceMap.pm
-    version: '0.21'
+    version: '0.22'
 recommends:
   RDF::NS: '20130802'
   RDF::Prefixes: '0'
@@ -51,12 +51,12 @@ requires:
   namespace::autoclean: '0.20'
   perl: '5.008001'
 resources:
-  X_identifier: http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project
+  Identifier: http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project
   bugtracker: https://github.com/kjetilk/URI-NamespaceMap/issues
   homepage: https://metacpan.org/module/URI::NamespaceMap
   license: http://dev.perl.org/licenses/
   repository: https://github.com/kjetilk/URI-NamespaceMap/
-version: '0.21'
+version: '0.22'
 x_contributors:
   - 'Dorian Taylor <dorian@cpan.org>'
   - 'Toby Inkster (TOBYINK) <tobyink@cpan.org>'

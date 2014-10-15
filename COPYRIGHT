@@ -3,38 +3,6 @@ Upstream-Name: URI-NamespaceMap
 Upstream-Contact: Chris Prather (PERIGRIN) <chris@prather.org>, Gregory Todd Williams <gwilliams@cpan.org>, and Kjetil Kjernsmo <kjetilk@cpan.org>
 Source: https://metacpan.org/module/URI::NamespaceMap
 
-Files: INSTALL
- LICENSE
- inc/Module/AutoInstall.pm
- inc/Module/Install.pm
- inc/Module/Install/AutoInstall.pm
- inc/Module/Install/AutoLicense.pm
- inc/Module/Install/AutoManifest.pm
- inc/Module/Install/Base.pm
- inc/Module/Install/Can.pm
- inc/Module/Install/Contributors.pm
- inc/Module/Install/Copyright.pm
- inc/Module/Install/Credits.pm
- inc/Module/Install/DOAP.pm
- inc/Module/Install/DOAPChangeSets.pm
- inc/Module/Install/Fetch.pm
- inc/Module/Install/Include.pm
- inc/Module/Install/Makefile.pm
- inc/Module/Install/ManifestSkip.pm
- inc/Module/Install/Metadata.pm
- inc/Module/Install/Package.pm
- inc/Module/Install/RDF.pm
- inc/Module/Install/ReadmeFromPod.pm
- inc/Module/Install/TrustMetaYml.pm
- inc/Module/Install/Win32.pm
- inc/Module/Install/WriteAll.pm
- inc/Module/Package.pm
- inc/Module/Package/Dist/RDF.pm
- inc/Sub/Util.pm
- inc/YAML/Tiny.pm
-Copyright: Unknown
-License: Unknown
-
 Files: Changes
  META.json
  META.yml
@@ -62,12 +30,10 @@ Files: COPYRIGHT
 Copyright: None
 License: public-domain
 
-Files: inc/Scalar/Util.pm
-Copyright: Copyright (c) 1997-2007 Graham Barr <gbarr@pobox.com>. All rights reserved.
- Copyright (c) 1999 Tuomas J. Lukka <lukka@iki.fi>. All rights reserved.
- Copyright (C) 2004, 2008  Matthijs van Duin.  All rights reserved.
- Copyright (C) 2014 cPanel Inc.  All rights reserved.
-License: GPL-1.0+ or Artistic-1.0
+Files: INSTALL
+ LICENSE
+Copyright: Unknown
+License: Unknown
 
 Files: Makefile.PL
 Copyright: Copyright 2013 Toby Inkster.

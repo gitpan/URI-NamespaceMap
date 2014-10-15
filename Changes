@@ -8,6 +8,10 @@ Maintainer:   Kjetil Kjernsmo <kjetilk@cpan.org>
 Maintainer:   Gregory Todd Williams <gwilliams@cpan.org>
 Maintainer:   Chris Prather (PERIGRIN) <chris@prather.org>
 
+0.22	2014-10-15	Clean up source tree.
+
+ - Clean up source tree.
+
 0.21	2014-10-05	Fix missing Changes.
 
  [ Bug Fixes ]

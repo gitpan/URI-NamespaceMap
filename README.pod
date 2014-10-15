@@ -1,7 +1,6 @@
+package URI::NamespaceMap;
 use strict;
 use warnings;
-
-package URI::NamespaceMap;
 use Moo 1.006000;
 use Module::Load::Conditional qw[can_load];
 use URI::Namespace;
@@ -19,11 +18,11 @@ URI::NamespaceMap - Class holding a collection of namespaces
 
 =head1 VERSION
 
-Version 0.21
+Version 0.22
 
 =cut
 
-our $VERSION = '0.21';
+our $VERSION = '0.22';
 
 
 =head1 SYNOPSIS
