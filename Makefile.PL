@@ -11,7 +11,7 @@ my $meta = {
                         "Chris Prather (PERIGRIN) <chris\@prather.org>",
                       ],
   "dynamic_config" => 0,
-  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.023, CPAN::Meta::Converter version 2.142060",
+  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.023, CPAN::Meta::Converter version 2.133380",
   "keywords"       => [],
   "license"        => ["perl_5"],
   "meta-spec"      => {
@@ -42,7 +42,7 @@ my $meta = {
   "provides"       => {
                         "Types::Namespace"  => { file => "lib/Types/Namespace.pm", version => 0.12 },
                         "URI::Namespace"    => { file => "lib/URI/Namespace.pm", version => 0.12 },
-                        "URI::NamespaceMap" => { file => "lib/URI/NamespaceMap.pm", version => 0.22 },
+                        "URI::NamespaceMap" => { file => "lib/URI/NamespaceMap.pm", version => 0.24 },
                       },
   "release_status" => "stable",
   "resources"      => {
@@ -55,7 +55,7 @@ my $meta = {
                                         },
                         x_identifier => "http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project",
                       },
-  "version"        => 0.22,
+  "version"        => 0.24,
   "x_contributors" => [
                         "Dorian Taylor <dorian\@cpan.org>",
                         "Toby Inkster (TOBYINK) <tobyink\@cpan.org>",

@@ -18,11 +18,11 @@ URI::NamespaceMap - Class holding a collection of namespaces
 
 =head1 VERSION
 
-Version 0.22
+Version 0.24
 
 =cut
 
-our $VERSION = '0.22';
+our $VERSION = '0.24';
 
 
 =head1 SYNOPSIS
@@ -34,7 +34,7 @@ our $VERSION = '0.22';
   $map->add_mapping(foaf => $foaf);
   $map->add_mapping(rdf => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#' );
   $map->list_prefixes;  #  ( 'foaf', 'rdf', 'xsd' )
-
+  $map->foaf; # Returns URI::Namespace object
 
 =head1 DESCRIPTION
 
@@ -66,7 +66,20 @@ Removes a namespace from the map given a prefix.
 
 =item C<< namespace_uri ( $name ) >>
 
-Returns the namespace object (if any) associated with the given prefix.
+Returns the L<URI::Namespace> object (if any) associated with the given prefix.
+
+=item C<< $name >>
+
+This module creates a method for all the prefixes, so you can say e.g.
+
+  $map->foaf
+
+and get a L<URI::Namespace> object for the FOAF namespace. Since
+L<URI::Namespace> does the same for local names, you can then say e.g.
+
+  $map->foaf->name
+
+to get a full L<URI>.
 
 =item C<< list_namespaces >>
 
@@ -90,11 +103,11 @@ around BUILDARGS => sub {
 };
 
 has namespace_map => (
-							 is => "ro",
-							 isa => HashRef[Namespace],
-							 coerce => 1,
-							 default => quote_sub q { {} },
-							);
+                      is => "ro",
+                      isa => HashRef[Namespace],
+                      coerce => 1,
+                      default => quote_sub q { {} },
+                     );
 
 sub add_mapping     { $_[0]->namespace_map->{$_[1]} = Namespace->assert_coerce($_[2]) }
 sub remove_mapping  { delete $_[0]->namespace_map->{$_[1]} }
@@ -137,65 +150,65 @@ called in list context) for the given URI.
 
 # turn the URI back into a string to mitigate unexpected behaviour
 sub _scrub_uri {
-    my $uri = shift;
-    if (ref $uri) {
-        if (blessed $uri) {
-            if ($uri->isa('URI::Namespace')) {
-                $uri = $uri->as_string;
-            }
-            elsif ($uri->isa('URI')) {
-                # it's probably not necessary to do this, but whatever
-                $uri = $uri->as_string;
-            }
-            elsif ($uri->isa('RDF::Trine::Node')) {
-                # it is, on the other hand, necessary to do this.
-                $uri = $uri->uri_value;
-            }
-            elsif ($uri->isa('RDF::Trine::Namespace')) {
-                # and this
-                $uri = $uri->uri->uri_value;
-            }
-            else {
-                # let's hope whatever was passed in has a string overload
-                $uri = "$uri";
-            }
-        }
-        else {
-            Carp::croak(sprintf "You probably didn't mean to pass this " .
-                            "an unblessed %s reference", ref $uri);
-        }
-    }
-
-    return $uri;
+	my $uri = shift;
+	if (ref $uri) {
+		if (blessed $uri) {
+			if ($uri->isa('URI::Namespace')) {
+				$uri = $uri->as_string;
+			}
+			elsif ($uri->isa('URI')) {
+				# it's probably not necessary to do this, but whatever
+				$uri = $uri->as_string;
+			}
+			elsif ($uri->isa('RDF::Trine::Node')) {
+				# it is, on the other hand, necessary to do this.
+				$uri = $uri->uri_value;
+			}
+			elsif ($uri->isa('RDF::Trine::Namespace')) {
+				# and this
+				$uri = $uri->uri->uri_value;
+			}
+			else {
+				# let's hope whatever was passed in has a string overload
+				$uri = "$uri";
+			}
+		}
+		else {
+			Carp::croak(sprintf "You probably didn't mean to pass this " .
+			            "an unblessed %s reference", ref $uri);
+		}
+	}
+	
+	return $uri;
 }
 
 sub prefix_for {
-    my ($self, $uri) = @_;
-
-    $uri = _scrub_uri($uri);
-
-    my @candidates;
-    for my $k ($self->list_prefixes) {
-        my $v = $self->namespace_uri($k);
-
-        my $nsuri = $v->as_string;
-
-        # the input should always be longer than the namespace
-        next if length $nsuri > length $uri;
-
-        # candidate namespace must match exactly
-        my $cns = substr($uri, 0, length $nsuri);
-        push @candidates, $k if $cns eq $nsuri;
-    }
-
-    # make sure this behaves correctly when empty
-    return unless @candidates;
-
-    # if this returns more than one prefix, take the
-    # shortest/lexically lowest one.
-    @candidates = sort @candidates;
-
-    return wantarray ? @candidates : $candidates[0];
+	my ($self, $uri) = @_;
+	
+	$uri = _scrub_uri($uri);
+	
+	my @candidates;
+	for my $k ($self->list_prefixes) {
+		my $v = $self->namespace_uri($k);
+		
+		my $nsuri = $v->as_string;
+		
+		# the input should always be longer than the namespace
+		next if length $nsuri > length $uri;
+		
+		# candidate namespace must match exactly
+		my $cns = substr($uri, 0, length $nsuri);
+		push @candidates, $k if $cns eq $nsuri;
+	}
+	
+	# make sure this behaves correctly when empty
+	return unless @candidates;
+	
+	# if this returns more than one prefix, take the
+	# shortest/lexically lowest one.
+	@candidates = sort @candidates;
+	
+	return wantarray ? @candidates : $candidates[0];
 }
 
 =item abbreviate C<< uri ($uri) >>
@@ -210,18 +223,18 @@ may be useful for certain serialization tasks.
 =cut
 
 sub abbreviate {
-    my ($self, $uri) = @_;
-
-    $uri = _scrub_uri($uri);
-
-    my $prefix = $self->prefix_for($uri);
-
-    # XXX is this actually the most desirable behaviour?
-    return unless defined $prefix;
-
-    my $nsuri = _scrub_uri($self->namespace_uri($prefix));
-
-    return sprintf('%s:%s', $prefix, substr($uri, length $nsuri));
+	my ($self, $uri) = @_;
+	
+	$uri = _scrub_uri($uri);
+	
+	my $prefix = $self->prefix_for($uri);
+	
+	# XXX is this actually the most desirable behaviour?
+	return unless defined $prefix;
+	
+	my $nsuri = _scrub_uri($self->namespace_uri($prefix));
+	
+	return sprintf('%s:%s', $prefix, substr($uri, length $nsuri));
 }
 
 our $AUTOLOAD;
@@ -239,21 +252,21 @@ sub _guess {
 	my $xmlns = can_load( modules => { 'XML::CommonNS' => 0 } );
 	my $rdfns = can_load( modules => { 'RDF::NS' => 20130802 } );
 	my $rdfpr = can_load( modules => { 'RDF::Prefixes' => 0 } );
-
+	
 	confess 'To resolve an array, you need either XML::CommonNS, RDF::NS or RDF::Prefixes' unless ($xmlns || $rdfns || $rdfpr);
 	my %namespaces;
-
+	
 	foreach my $entry (@data) {
-
+		
 		if ($entry =~ m/^[a-z]\w+$/i) {
 			# This is a prefix
 			warn "Cannot resolve '$entry' without XML::CommonNS or RDF::NS" unless ($xmlns || $rdfns);
 			if ($xmlns) {
-			  require XML::CommonNS;
-			  XML::CommonNS->import(':all');
-			  try {
-				 $namespaces{$entry} = XML::CommonNS->uri(uc($entry))->toString;
-			  }; # Then, XML::CommonNS doesn't have the prefix, which is OK, we just continue
+				require XML::CommonNS;
+				XML::CommonNS->import(':all');
+				try {
+					$namespaces{$entry} = XML::CommonNS->uri(uc($entry))->toString;
+				}; # Then, XML::CommonNS doesn't have the prefix, which is OK, we just continue
 			}
 			if ((! $namespaces{$entry}) && $rdfns) {
 				my $ns = RDF::NS->new;
@@ -323,8 +336,6 @@ under the same terms as Perl itself.
 
 
 =cut
-
-__PACKAGE__->meta->make_immutable();
 
 1;
 __END__

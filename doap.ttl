@@ -28,13 +28,13 @@
 <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/project>
 	a                    doap:Project;
 	doap-deps:runtime-recommendation [ doap-deps:on "RDF::NS 20130802"^^doap-deps:CpanId ], [ doap-deps:on "RDF::Prefixes"^^doap-deps:CpanId ], [ doap-deps:on "XML::CommonNS"^^doap-deps:CpanId ];
-	doap-deps:runtime-requirement [ doap-deps:on "perl 5.008001"^^doap-deps:CpanId ], [ doap-deps:on "Moo 1.006000"^^doap-deps:CpanId ], [ doap-deps:on "URI 1.52"^^doap-deps:CpanId ], [ doap-deps:on "IRI 0.004"^^doap-deps:CpanId ], [ doap-deps:on "Types::URI 0.004"^^doap-deps:CpanId ], [
-		doap-deps:on "Type::Library 1.000000"^^doap-deps:CpanId;
-	], [ doap-deps:on "Try::Tiny"^^doap-deps:CpanId ], [
+	doap-deps:runtime-requirement [
 		doap-deps:on "Module::Load::Conditional"^^doap-deps:CpanId;
 	], [ doap-deps:on "Carp"^^doap-deps:CpanId ], [
 		doap-deps:on "namespace::autoclean 0.20"^^doap-deps:CpanId;
-	];
+	], [ doap-deps:on "perl 5.008001"^^doap-deps:CpanId ], [ doap-deps:on "Moo 1.006000"^^doap-deps:CpanId ], [ doap-deps:on "URI 1.52"^^doap-deps:CpanId ], [ doap-deps:on "IRI 0.004"^^doap-deps:CpanId ], [ doap-deps:on "Types::URI 0.004"^^doap-deps:CpanId ], [
+		doap-deps:on "Type::Library 1.000000"^^doap-deps:CpanId;
+	], [ doap-deps:on "Try::Tiny"^^doap-deps:CpanId ];
 	doap-deps:test-requirement [ doap-deps:on "Test::More 0.88"^^doap-deps:CpanId ], [ doap-deps:on "Test::Exception"^^doap-deps:CpanId ];
 	doap:bug-database    <https://github.com/kjetilk/URI-NamespaceMap/issues>;
 	doap:created         "2012-08-27"^^xsd:date;
@@ -44,7 +44,7 @@
 	doap:maintainer      <http://kasei.us/about/foaf.xrdf#greg>, <http://purl.org/NET/cpan-uri/person/perigrin>, <http://www.kjetil.kjernsmo.net/foaf#me>;
 	doap:name            "URI-NamespaceMap";
 	doap:programming-language "Perl";
-	doap:release         <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_01>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_02>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_04>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_06>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_08>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_10>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_12>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_20>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_21>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_22>;
+	doap:release         <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_01>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_02>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_04>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_06>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_08>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_10>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_12>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_20>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_21>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_22>, <http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_24>;
 	doap:repository      [
 		a doap:GitRepository;
 		doap:browse <https://github.com/kjetilk/URI-NamespaceMap/>;
@@ -193,6 +193,28 @@
 	];
 	doap:revision        "0.22"^^xsd:string;
 	owl:sameAs           <http://packages.qa.debian.org/liburi-namespacemap-perl#upstreamsrc_0.22>.
+
+<http://purl.org/NET/cpan-uri/dist/URI-NamespaceMap/v_0_24>
+	a                    doap:Version;
+	rdfs:label           "Improve documentation."@en;
+	dc:issued            "2014-12-10"^^xsd:date;
+	doap-changeset:changeset [
+		doap-changeset:item [
+			a doap-changeset:Change;
+			rdfs:label "Reindent using Emacs smart-tabs."@en;
+		], [
+			a doap-changeset:Change;
+			rdfs:label "Improve documentation, autoloader."@en;
+		], [
+			a doap-changeset:Change;
+			rdfs:label "Some code cleanup."@en;
+		], [
+			a doap-changeset:Bugfix;
+			rdfs:label "Use a string comparison in failing test."@en;
+		];
+	];
+	doap:revision        "0.24"^^xsd:string;
+	owl:sameAs           <http://packages.qa.debian.org/liburi-namespacemap-perl#upstreamsrc_0.24>.
 
 <http://purl.org/NET/cpan-uri/person/perigrin>
 	a                    foaf:Person;

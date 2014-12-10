@@ -2,7 +2,7 @@ NAME
     URI::NamespaceMap - Class holding a collection of namespaces
 
 VERSION
-    Version 0.22
+    Version 0.24
 
 SYNOPSIS
       use URI::NamespaceMap;
@@ -12,6 +12,7 @@ SYNOPSIS
       $map->add_mapping(foaf => $foaf);
       $map->add_mapping(rdf => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#' );
       $map->list_prefixes;  #  ( 'foaf', 'rdf', 'xsd' )
+      $map->foaf; # Returns URI::Namespace object
 
 DESCRIPTION
     This module provides an object to manage multiple namespaces for creating
@@ -35,8 +36,20 @@ METHODS
         Removes a namespace from the map given a prefix.
 
     `namespace_uri ( $name )`
-        Returns the namespace object (if any) associated with the given
+        Returns the URI::Namespace object (if any) associated with the given
         prefix.
+
+    $name
+        This module creates a method for all the prefixes, so you can say e.g.
+
+          $map->foaf
+
+        and get a URI::Namespace object for the FOAF namespace. Since
+        URI::Namespace does the same for local names, you can then say e.g.
+
+          $map->foaf->name
+
+        to get a full URI.
 
     `list_namespaces`
         Returns an array of URI::Namespace objects with all the namespaces.
